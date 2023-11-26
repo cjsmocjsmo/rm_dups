@@ -26,8 +26,8 @@ pub struct DupStruct {
 
 fn main() {
 
-    let url2 = "/media/pipi/0123-4567/oldjpg_backup".to_string();
-    let url3 = "/media/pipi/0123-4567/ToRemove".to_string();
+    let url2 = "/media/pipi/0123-4567/oldjpg_backup/".to_string();
+    let url3 = "/media/pipi/0123-4567/ToRemove/".to_string();
     let url4 = "/media/pipi/USB01/DeDuped1/".to_string();
 
     let json_list = walk_dirs::walk_dir(url3.clone());
