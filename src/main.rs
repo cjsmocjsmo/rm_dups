@@ -55,7 +55,11 @@ fn main() {
                     println!("File does not exist: \n\t{}", dup_url.clone());
                 }
             }
-            fs::remove_file(keep_file.clone()).expect("Unable to delete keep file");
+            match fs::remove_file(keep_file.clone())
+            {
+                Ok(_) => println!("Deleted: \n\t{}", keep_file.clone()),
+                Err(_) => println!("File does not exist: \n\t{}", keep_file.clone()),
+            }
         } else {
             println!("File does not exist: \n\t{}", keep_file.clone());
         }
