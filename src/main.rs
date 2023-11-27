@@ -43,7 +43,7 @@ fn main() {
             let fname = keep_file_parts.last().unwrap().to_string();
             let newfilename = url4.clone() + &fname;
             println!("newfilename: {:#?}", newfilename);
-            fs::copy(keep_file.clone(), newfilename.clone()).expect("Unable to rename file");
+            fs::copy(keep_file.clone(), newfilename.clone()).expect("Unable to copy file");
             let dups = dups_entry.duplicates.clone();
             for dup in dups {
                 let dup_url = url2.clone() + &dup.strdups.to_string();
@@ -55,7 +55,9 @@ fn main() {
                     println!("File does not exist: \n\t{}", dup_url.clone());
                 }
             }
+            fs::remove_file(keep_file.clone()).expect("Unable to delete keep file");
+        } else {
+            println!("File does not exist: \n\t{}", keep_file.clone());
         }
-        fs::remove_file(keep_file.clone()).expect("Unable to delete keep file");
     }
 }
